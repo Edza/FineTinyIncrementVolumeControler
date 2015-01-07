@@ -1,0 +1,26 @@
+﻿<Window x:Class="FineTinyIncrementVolumeControler.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Very *fine* volume meter control bar" Height="350" Width="525" Loaded="Window_Loaded">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <CheckBox Grid.Row="0" Unchecked="CheckBox_Checked" Checked="CheckBox_Checked">Stay on top of the world, baby!</CheckBox>
+        <TextBlock Grid.Row="1">Min</TextBlock>
+        <Slider x:Name="min" ValueChanged="min_ValueChanged"  Value="40" Grid.Row="2"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
+                Minimum="0" Maximum="100"/>
+        <TextBlock Grid.Row="3">Max</TextBlock>
+        <Slider x:Name="max" ValueChanged="max_ValueChanged"  Value="80" Grid.Row="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Minimum="0" Maximum="100"/>
+        <TextBlock Grid.Row="5">Vol</TextBlock>
+        <Slider x:Name="vol" Foreground="Red" Background="DarkGoldenrod" ValueChanged="vol_ValueChanged" Value="50"  Grid.Row="6"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
+                Minimum="0" Maximum="100"/>
+    </Grid>
+</Window>
