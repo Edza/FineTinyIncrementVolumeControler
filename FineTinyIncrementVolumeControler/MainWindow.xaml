@@ -20,7 +20,7 @@
         <Slider x:Name="max" ValueChanged="max_ValueChanged"  Value="80" Grid.Row="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 Minimum="0" Maximum="100"/>
         <TextBlock Grid.Row="5">Vol</TextBlock>
-        <Slider x:Name="vol" Foreground="Red" Background="DarkGoldenrod" ValueChanged="vol_ValueChanged" Value="50"  Grid.Row="6"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
+        <Slider IsMoveToPointEnabled="True" x:Name="vol" Foreground="Red" Background="DarkGoldenrod" ValueChanged="vol_ValueChanged" Value="50"  Grid.Row="6"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
                 Minimum="0" Maximum="100"/>
     </Grid>
 </Window>
