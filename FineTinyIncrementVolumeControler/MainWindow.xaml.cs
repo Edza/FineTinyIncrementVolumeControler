@@ -25,7 +25,7 @@ namespace FineTinyIncrementVolumeControler
             InitializeComponent();
         }
 
-        int minVol = -1, maxVol = -1, targetVol = -1;
+        int minVol = -1, maxVol = -1, targetVol = -1, realVol = -1;
 
         #region GUI
 
@@ -92,7 +92,27 @@ namespace FineTinyIncrementVolumeControler
         {
             if (vol == null)
                 return;
-            vol.Value = 50.0;
+            if (realVol != -1)
+            {
+                if (realVol > (int)maxVol)
+                {
+                    vol.Value = 100.0;
+                    ForceSetVolume(maxVol);
+                }
+                else if(realVol < (int)minVol)
+                {
+                    vol.Value = 0.0;
+                    ForceSetVolume(minVol);
+                }
+                else
+                {
+                    // ja realVol ir iekš min->max diazapona
+                    double pos = (double)(realVol - minVol) / (maxVol - minVol);
+                    vol.Value = pos * 100;
+                }
+            }
+            else
+                vol.Value = 50.0;
         }
 
         private void vol_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -112,8 +132,13 @@ namespace FineTinyIncrementVolumeControler
             int difference = maxVol - minVol;
             double ration = targetVol / 100.0;
             double delta = ration * difference;
-            int realVol = minVol + (int)Math.Round(delta);
+            realVol = minVol + (int)Math.Round(delta);
             SystemVolumChanger.SetVolume(realVol);
+        }
+
+        private void ForceSetVolume(int val)
+        {
+            SystemVolumChanger.SetVolume(val);
         }
     }
 }
